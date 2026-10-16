@@ -15,7 +15,7 @@ function AltinToz() {
     const fare = { x: 0, y: 0, hx: 0, hy: 0 }
 
     const kur = () => {
-      const dpr = Math.min(window.devicePixelRatio || 1, 2)
+      const dpr = Math.min(window.devicePixelRatio || 1, 1.5)
       en = window.innerWidth
       boy = window.innerHeight
       c.width = en * dpr
@@ -23,7 +23,7 @@ function AltinToz() {
       c.style.width = `${en}px`
       c.style.height = `${boy}px`
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0)
-      const adet = Math.round(Math.min(140, (en * boy) / 11000))
+      const adet = Math.round(Math.min(90, (en * boy) / 16000))
       parcalar = Array.from({ length: adet }, () => ({
         x: Math.random() * en,
         y: Math.random() * boy,
@@ -50,14 +50,19 @@ function AltinToz() {
         const px = p.x + fare.hx * 18 * p.derinlik
         const py = p.y + fare.hy * 18 * p.derinlik
         const a = (0.25 + 0.55 * (0.5 + 0.5 * Math.sin(p.faz))) * p.derinlik
-        ctx.beginPath()
+        // gölge (shadowBlur) yerine ucuz bir ışıltı halkası: pil ve CPU dostu
+        ctx.fillStyle = `rgba(205, 164, 104, ${a * 0.18})`
+        ctx.beginPath(); ctx.arc(px, py, p.r * 3.2, 0, Math.PI * 2); ctx.fill()
         ctx.fillStyle = `rgba(232, 200, 140, ${a})`
-        ctx.shadowColor = 'rgba(205, 164, 104, 0.9)'
-        ctx.shadowBlur = p.r * 6
-        ctx.arc(px, py, p.r, 0, Math.PI * 2)
-        ctx.fill()
+        ctx.beginPath(); ctx.arc(px, py, p.r, 0, Math.PI * 2); ctx.fill()
       }
-      if (!sakin) kare = requestAnimationFrame(ciz)
+      if (!sakin && !document.hidden) kare = requestAnimationFrame(ciz)
+    }
+
+    // Sekme arka plandayken çizimi tamamen durdur, geri gelince devam et
+    const gorunurluk = () => {
+      cancelAnimationFrame(kare)
+      if (!document.hidden && !sakin) kare = requestAnimationFrame(ciz)
     }
 
     const hareket = (e) => {
@@ -69,8 +74,10 @@ function AltinToz() {
     ciz()
     window.addEventListener('resize', kur)
     window.addEventListener('pointermove', hareket)
+    document.addEventListener('visibilitychange', gorunurluk)
     return () => {
       cancelAnimationFrame(kare)
+      document.removeEventListener('visibilitychange', gorunurluk)
       window.removeEventListener('resize', kur)
       window.removeEventListener('pointermove', hareket)
     }
