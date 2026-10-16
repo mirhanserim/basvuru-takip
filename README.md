@@ -33,6 +33,12 @@ Staj ve iş başvurularını tek yerden yönetmek için geliştirilmiş bir Reac
 - 14 günden uzun süredir yanıt alınamayan başvurular için takip hatırlatması
 - Mobil uyumlu; sistemde "hareketi azalt" açıksa animasyonlar otomatik sadeleşir
 
+### Kalite
+- **Lighthouse:** Erişilebilirlik 100 · En İyi Uygulamalar 100 · SEO 100 (masaüstü ve mobil)
+- **Core Web Vitals (lab):** LCP ≈ 1,9 sn · CLS 0
+- WCAG AA kontrast, etiketli form alanları, klavyeyle tam kullanım, `prefers-reduced-motion` desteği
+- Gizli sekmede animasyon durur (pil dostu); hash'li dosyalar için 1 yıllık önbellek, güvenlik başlıkları
+
 ## Teknolojiler
 React 19 · Vite · Tailwind CSS 4 · Motion · Lucide · LocalStorage · Netlify
 

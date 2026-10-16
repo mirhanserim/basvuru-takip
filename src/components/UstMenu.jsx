@@ -12,8 +12,8 @@ export default function UstMenu({ gorunum, onGorunum, onPalet, onYeni }) {
       className="sticky top-3 z-40 mx-auto mt-3 max-w-[1200px] px-4 sm:top-4 sm:mt-4"
     >
       <nav className="cam flex items-center gap-3 rounded-[22px] py-2 pl-3 pr-2 shadow-[0_20px_50px_-25px_rgb(0_0_0/0.9)]">
-        <a href="#" className="flex items-center gap-2.5 pr-2" aria-label="MMSerim Kariyer ana sayfa">
-          <img src="/logo.png" alt="" className="size-9 drop-shadow-[0_0_12px_rgb(205_164_104/0.45)]" />
+        <a href="#" className="flex items-center gap-2.5 pr-2">
+          <img src="/logo.png" alt="" width="31" height="36" className="h-9 w-auto drop-shadow-[0_0_12px_rgb(205_164_104/0.45)]" />
           <span className="leading-none">
             <span className="block text-[15px] font-semibold tracking-tight text-metin"><b className="font-extrabold">MM</b>Serim</span>
             <span className="mt-1 block font-mono text-[9.5px] tracking-[0.28em] text-altin-soluk">KARİYER</span>
@@ -27,7 +27,7 @@ export default function UstMenu({ gorunum, onGorunum, onPalet, onYeni }) {
         <div className="ml-auto flex items-center gap-2 md:ml-0">
           <button
             onClick={onPalet}
-            aria-label="Komut paletini aç"
+            title="Komut paletini aç"
             className="hidden items-center gap-2 rounded-xl px-3 py-2 text-[13px] text-soluk ring-1 ring-white/[0.08] transition hover:text-metin hover:ring-white/15 sm:flex"
           >
             <Command size={14} /> Ara

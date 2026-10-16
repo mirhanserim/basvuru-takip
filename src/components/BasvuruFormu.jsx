@@ -43,6 +43,8 @@ function Secici({ ad, secenekler, deger, onDegis, renkli }) {
 
 /** Hem ekleme hem güncelleme için kullanılan form. */
 export default function BasvuruFormu({ baslangic, onKaydet, onIptal, odakId }) {
+  const kimlik = useId()
+  const sirketId = odakId ?? `${kimlik}-sirket`
   const [form, setForm] = useState(baslangic ?? bosBasvuru())
   const [hata, setHata] = useState('')
   const [basarili, setBasarili] = useState(false)
@@ -68,12 +70,12 @@ export default function BasvuruFormu({ baslangic, onKaydet, onIptal, odakId }) {
   return (
     <form onSubmit={gonder} className="grid gap-5 sm:grid-cols-2" noValidate>
       <div>
-        <label htmlFor={odakId} className={etiket}>Şirket *</label>
-        <input id={odakId} className="girdi" value={form.sirket} onChange={degistir('sirket')} placeholder="Örn. Anka Yazılım" autoComplete="off" />
+        <label htmlFor={sirketId} className={etiket}>Şirket *</label>
+        <input id={sirketId} className="girdi" value={form.sirket} onChange={degistir('sirket')} placeholder="Örn. Anka Yazılım" autoComplete="off" />
       </div>
       <div>
-        <label className={etiket}>Pozisyon *</label>
-        <input className="girdi" value={form.pozisyon} onChange={degistir('pozisyon')} placeholder="Örn. YZ Stajyeri" autoComplete="off" />
+        <label htmlFor={`${kimlik}-pozisyon`} className={etiket}>Pozisyon *</label>
+        <input id={`${kimlik}-pozisyon`} className="girdi" value={form.pozisyon} onChange={degistir('pozisyon')} placeholder="Örn. YZ Stajyeri" autoComplete="off" />
       </div>
       <div className="sm:col-span-2">
         <span className={etiket}>Tür</span>
@@ -84,16 +86,16 @@ export default function BasvuruFormu({ baslangic, onKaydet, onIptal, odakId }) {
         <Secici ad="Durum" secenekler={DURUMLAR} deger={form.durum} onDegis={(v) => ayarla('durum', v)} renkli />
       </div>
       <div>
-        <label className={etiket}>Başvuru tarihi</label>
-        <input type="date" className="girdi" value={form.tarih} onChange={degistir('tarih')} />
+        <label htmlFor={`${kimlik}-tarih`} className={etiket}>Başvuru tarihi</label>
+        <input id={`${kimlik}-tarih`} type="date" className="girdi" value={form.tarih} onChange={degistir('tarih')} />
       </div>
       <div>
-        <label className={etiket}>İlan bağlantısı</label>
-        <input type="url" className="girdi" value={form.baglanti} onChange={degistir('baglanti')} placeholder="https://..." />
+        <label htmlFor={`${kimlik}-ilan`} className={etiket}>İlan bağlantısı</label>
+        <input id={`${kimlik}-ilan`} type="url" className="girdi" value={form.baglanti} onChange={degistir('baglanti')} placeholder="https://..." />
       </div>
       <div className="sm:col-span-2">
-        <label className={etiket}>Not</label>
-        <textarea rows={2} className="girdi resize-none" value={form.not} onChange={degistir('not')} placeholder="Mülakat tarihi, istenen beceriler..." />
+        <label htmlFor={`${kimlik}-not`} className={etiket}>Not</label>
+        <textarea id={`${kimlik}-not`} rows={2} className="girdi resize-none" value={form.not} onChange={degistir('not')} placeholder="Mülakat tarihi, istenen beceriler..." />
       </div>
 
       <AnimatePresence>
