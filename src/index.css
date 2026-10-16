@@ -1,10 +1,150 @@
 @import "tailwindcss";
 
+/* MMSerim marka paleti: gece siyahı + şampanya altını */
 @theme {
-  --color-lacivert: #0d2343;
-  --color-turuncu: #f08a24;
+  --font-sans: "Inter", ui-sans-serif, system-ui, -apple-system, "Segoe UI", sans-serif;
+  --font-serif: "Fraunces", ui-serif, Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", monospace;
+
+  --color-zemin: #060605;
+  --color-yukselti: #0b0b0a;
+  --color-yuzey: #0d0d0c;
+  --color-metin: #f6f4f0;
+  --color-soluk: #a9a59c;
+  --color-sonuk: #6b6760;
+  --color-altin: #cda468;
+  --color-altin-acik: #f0dab0;
+  --color-altin-soluk: #e7cda0;
+  --color-altin-koyu: #8a6a3e;
 }
 
+:root {
+  color-scheme: dark;
+}
+
+html,
 body {
-  font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  background: var(--color-zemin);
+  color: var(--color-metin);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: rgb(205 164 104 / 0.35);
+  color: #fff;
+}
+
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgb(255 255 255 / 0.08); border-radius: 99px; border: 2px solid var(--color-zemin); }
+::-webkit-scrollbar-thumb:hover { background: rgb(205 164 104 / 0.35); }
+
+/* Yüzeyler */
+@utility yuzey {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.035), rgb(255 255 255 / 0.012)), var(--color-yuzey);
+  border: 1px solid rgb(255 255 255 / 0.075);
+  box-shadow: inset 0 1px 0 rgb(255 255 255 / 0.04), 0 24px 60px -30px rgb(0 0 0 / 0.9);
+}
+
+@utility cam {
+  background: rgb(10 10 9 / 0.94);
+  border: 1px solid rgb(255 255 255 / 0.08);
+  backdrop-filter: blur(24px) saturate(150%);
+  -webkit-backdrop-filter: blur(24px) saturate(150%);
+}
+
+/* Altın parlak metin */
+@utility altin-metin {
+  background: linear-gradient(100deg, #f0dab0 0%, #cda468 45%, #f0dab0 70%, #b08848 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: altin-akis 7s linear infinite;
+}
+
+/* Birincil altın buton */
+@utility altin-buton {
+  background: linear-gradient(135deg, #f0dab0 0%, #e2c48f 40%, #cda468 100%);
+  color: #171006;
+  box-shadow: 0 10px 34px -12px rgb(205 164 104 / 0.75), inset 0 1px 0 rgb(255 255 255 / 0.5);
+}
+
+/* Mono üst etiket ("— KARİYER PANOSU") */
+@utility etiket-mono {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--color-altin-soluk);
+}
+
+/* Form girdileri */
+@utility girdi {
+  width: 100%;
+  border-radius: 0.875rem;
+  border: 1px solid rgb(255 255 255 / 0.09);
+  background: rgb(255 255 255 / 0.025);
+  padding: 0.7rem 0.95rem;
+  font-size: 0.875rem;
+  color: var(--color-metin);
+  outline: none;
+  transition: border-color 0.25s, box-shadow 0.25s, background 0.25s;
+
+  &::placeholder { color: rgb(169 165 156 / 0.5); }
+  &:hover { border-color: rgb(255 255 255 / 0.16); }
+  &:focus {
+    border-color: rgb(205 164 104 / 0.65);
+    background: rgb(205 164 104 / 0.04);
+    box-shadow: 0 0 0 4px rgb(205 164 104 / 0.12);
+  }
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator { filter: invert(0.75) sepia(0.4); cursor: pointer; }
+select option { background: #0d0d0c; color: #f6f4f0; }
+
+/* Kartın etrafında dönen altın ışın */
+@property --aci {
+  syntax: "<angle>";
+  initial-value: 0deg;
+  inherits: false;
+}
+
+.isin-kenar::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: conic-gradient(from var(--aci), transparent 0 62%, rgb(240 218 176 / 0.9) 76%, #cda468 84%, transparent 96%);
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  animation: isin 4.5s linear infinite;
+  opacity: 0;
+  transition: opacity 0.5s;
+  pointer-events: none;
+}
+.group:hover .isin-kenar::before,
+.isin-kenar.aktif::before { opacity: 1; }
+
+@keyframes isin { to { --aci: 360deg; } }
+@keyframes altin-akis { to { background-position: 200% center; } }
+@keyframes parilti {
+  from { transform: translateX(-130%) skewX(-20deg); }
+  to { transform: translateX(260%) skewX(-20deg); }
+}
+@keyframes wiggle {
+  0%, 60%, 100% { transform: rotate(0); }
+  10%, 30% { transform: rotate(-14deg); }
+  20%, 40% { transform: rotate(14deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }
