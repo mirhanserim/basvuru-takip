@@ -3,6 +3,8 @@
 Staj ve iş başvurularını tek yerden yönetmek için geliştirilmiş bir React uygulaması.
 **Software Persona Yapay Zeka Mesleki Gelişim Programı (30. Dönem)**, *Web Geliştirme; Yapay Zeka* proje envanteri kapsamında hazırlandı.
 
+**Canlı demo:** https://basvuru-takip-mmserim.netlify.app
+
 ![Uygulama ekran görüntüsü](docs/ekran-goruntusu.png)
 
 ## Özellikler (CRUD)
