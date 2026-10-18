@@ -16,7 +16,7 @@
 export const DURUMLAR = ['Hazırlanıyor', 'Başvuruldu', 'Mülakat', 'Teklif', 'Reddedildi']
 export const TURLER = ['Staj', 'Tam Zamanlı', 'Yarı Zamanlı']
 
-/** Her durumun rengi ve rozet sınıfları (MMSerim sıcak paleti). */
+/** Her durumun rengi ve rozet sınıfları (Quantrophic sıcak paleti). */
 export const DURUM_META = {
   Hazırlanıyor: { renk: '#a9a59c', aciklama: 'Belgeler hazırlanıyor', rozet: 'bg-[#a9a59c]/10 text-[#c8c5be] ring-[#a9a59c]/25' },
   Başvuruldu: { renk: '#8fb4e3', aciklama: 'Yanıt bekleniyor', rozet: 'bg-[#8fb4e3]/10 text-[#b9d0ee] ring-[#8fb4e3]/30' },

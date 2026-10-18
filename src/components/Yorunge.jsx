@@ -9,7 +9,7 @@ const YORUNGELER = [
 ]
 const elipsYolu = (rx, ry) => `M ${rx},0 A ${rx},${ry} 0 1 1 ${-rx},0 A ${rx},${ry} 0 1 1 ${rx},0`
 
-/** MMSerim logosunun etrafında, her durumu temsil eden ışık noktalarının döndüğü yörünge görseli. */
+/** Quantrophic logosunun etrafında, her durumu temsil eden ışık noktalarının döndüğü yörünge görseli. */
 export default function Yorunge({ basvurular }) {
   const say = (d) => basvurular.filter((b) => b.durum === d).length
 

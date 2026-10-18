@@ -329,8 +329,8 @@ export default function AnaSayfa() {
       <footer className="mx-auto mt-16 max-w-[1200px] px-4 pb-24">
         <div className="flex flex-col items-center justify-between gap-4 border-t border-white/[0.07] pt-8 text-center sm:flex-row sm:text-left">
           <div className="flex items-center gap-3">
-            <img src="/logo.png" alt="" width="24" height="28" className="h-7 w-auto opacity-80" />
-            <span className="text-sm text-soluk"><b className="font-semibold text-metin">MMSerim</b> Kariyer · Muhammed Mirhan Serim</span>
+            <img src="/logo.png" alt="" width="26" height="24" className="h-7 w-auto opacity-80" />
+            <span className="text-sm text-soluk"><b className="font-semibold text-metin">Quantrophic</b> Kariyer · Muhammed Mirhan Serim</span>
           </div>
           <span className="font-mono text-[10px] uppercase tracking-[0.18em] text-sonuk">Veriler yalnızca bu tarayıcıda (LocalStorage) saklanır · Software Persona YZ Programı</span>
         </div>

@@ -13,9 +13,9 @@ export default function UstMenu({ gorunum, onGorunum, onPalet, onYeni }) {
     >
       <nav className="cam flex items-center gap-3 rounded-[22px] py-2 pl-3 pr-2 shadow-[0_20px_50px_-25px_rgb(0_0_0/0.9)]">
         <a href="#" className="flex items-center gap-2.5 pr-2">
-          <img src="/logo.png" alt="" width="31" height="36" className="h-9 w-auto drop-shadow-[0_0_12px_rgb(205_164_104/0.45)]" />
+          <img src="/logo.png" alt="" width="40" height="36" className="h-9 w-auto drop-shadow-[0_0_12px_rgb(205_164_104/0.45)]" />
           <span className="leading-none">
-            <span className="block text-[15px] font-semibold tracking-tight text-metin"><b className="font-extrabold">MM</b>Serim</span>
+            <span className="block text-[15px] font-semibold tracking-tight text-metin"><b className="font-extrabold">Q</b>uantrophic</span>
             <span className="mt-1 block font-mono text-[9.5px] tracking-[0.28em] text-altin-soluk">KARİYER</span>
           </span>
         </a>

@@ -25,7 +25,7 @@ Staj ve iş başvurularını tek yerden yönetmek için geliştirilmiş bir Reac
 ![Analiz görünümü](docs/analiz.png)
 
 ### Deneyim
-- **MMSerim marka kimliği:** gece siyahı + şampanya altını palet, Inter / Fraunces / IBM Plex Mono
+- **Quantrophic marka kimliği:** gece siyahı + şampanya altını palet, Inter / Fraunces / IBM Plex Mono
 - **Animasyonlar (Motion):** kelime kelime açılan başlık, logo etrafında başvuru durumlarını gösteren yörünge, fareye tepki veren altın toz parçacıkları (canvas), kart hover'ında dönen altın kenar ışını ve imleç ışığı, yay fiziğiyle kayan sekmeler/filtreler, sayan göstergeler, "Teklif" durumunda konfeti
 - **⌘K komut paleti:** başvurular ve eylemler arasında klavyeyle arama
 - **Klavye kısayolları:** `N` yeni başvuru · `/` arama · `1` `2` `3` görünümler · `Esc` pencereyi kapat
